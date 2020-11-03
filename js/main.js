@@ -60,6 +60,11 @@ function createCard(parent, obj) {
   card.setAttribute("class", "card");
   card.setAttribute("id", obj.bookid)
 
+  const deleteButton = document.createElement("i");
+  deleteButton.setAttribute("class", "card__delete fas fa-times");
+  deleteButton.addEventListener("click", () => deleteCard(card));
+  card.appendChild(deleteButton);
+
   const cardTitle = document.createElement("h2");
   cardTitle.setAttribute("class", "card__title");
   cardTitle.textContent = obj.title;
@@ -85,6 +90,15 @@ function createCard(parent, obj) {
   card.appendChild(readIcon);
 
   parent.appendChild(card);
+}
+
+function deleteCard(parent) {
+  parent.remove();
+  
+  const targetBook = myLibrary.findIndex(obj => {
+    return obj.bookid == parent.id ? 1 : 0;
+  })
+  myLibrary.splice(targetBook, 1);
 }
 
 function refreshDisplay(inputArray = myLibrary) {
