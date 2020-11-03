@@ -27,7 +27,7 @@ function createCloseButton(parent) {
   formClose.setAttribute("class", "canvas__close fas fa-times-circle");
   formClose.setAttribute("id", "closeCanvas");
   formClose.setAttribute("type", "button");
-  formClose.addEventListener("click", (e) => {
+  formClose.addEventListener("click", () => {
     parent.remove();
   })
   parent.appendChild(formClose);
@@ -89,7 +89,7 @@ function createFormControls(parent) {
   const submitButton = document.createElement("button");
   submitButton.setAttribute("class", "form__button form__submit");
   submitButton.setAttribute("type", "submit");
-  submitButton.textContent = "Submit";
+  submitButton.textContent = "Add";
   buttonContainer.appendChild(submitButton);
 
   const resetButton = document.createElement("button");
