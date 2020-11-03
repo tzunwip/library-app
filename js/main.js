@@ -94,11 +94,8 @@ function createCard(parent, obj) {
 
 function deleteCard(parent) {
   parent.remove();
-  
-  const targetBook = myLibrary.findIndex(obj => {
-    return obj.bookid == parent.id ? 1 : 0;
-  })
-  myLibrary.splice(targetBook, 1);
+
+  removeBookFromLibrary(parent.id);
 }
 
 function refreshDisplay(inputArray = myLibrary) {
@@ -123,6 +120,7 @@ function toggleReadStatus(icon, id) {
 
 // initialization
 function initialize() {
+  getLocalStorage();
   generateNavbar(body);
   generateDisplay(body);
   refreshDisplay();
