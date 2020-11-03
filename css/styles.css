@@ -23,6 +23,7 @@ body {
   overscroll-behavior: none;
 }
 
+/* navbar start */
 .navbar {
   width: 100%;
   display: grid;
@@ -43,11 +44,9 @@ body {
   grid: auto / auto-flow auto;
   gap: 1em;
 }
+/* navbar end */
 
-.btn, .linkicon, .readicon {
-  font-size: 1.5rem;
-}
-
+/* book display section */
 .display {
   width: min(100vw, 69rem);
   padding: 1rem;
@@ -64,22 +63,33 @@ body {
   margin-bottom: 1rem;
 }
 
+/* card start */
 .card {
   width: 15rem;
   height: 20rem;
   border: 0.1em solid black;
   padding: 1rem;
+  position: relative;
   display: grid;
-  grid: auto 1rem 3rem 1.5rem 1.5rem / none;
+  grid: 1fr 1rem 3rem 1.5rem 1.5rem / none;
   gap: 0.5rem;
-  justify-items: center;
-  align-items: center;
+  place-items: center;
+}
+
+.card__delete {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.4rem;
+  color: lightgray;
+}
+
+.card__delete:hover {
+  color: darkred;
 }
 
 .card__title {
-  height: 100%;
-  width: 100%;
-  align-self: end;
+  max-height: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -106,7 +116,9 @@ body {
 .readicon--false:hover {
   color: green;
 }
+/* card end */
 
+/* footer */
 .footer {
   width: 100%;
   height: 3rem;
@@ -114,6 +126,11 @@ body {
   display: flex;
   place-items: center;
   place-content: center;
+}
+
+/* icons */
+.btn, .linkicon, .readicon {
+  font-size: 1.5rem;
 }
 
 .linkicon:link, .linkicon:visited {
