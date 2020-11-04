@@ -2,13 +2,14 @@ function generateAddBookForm() {
   const canvas = document.createElement("div");
   canvas.setAttribute("class", "canvas");
 
-  createCloseButton(canvas);
-
+  
   const formContainer = document.createElement("form");
   formContainer.setAttribute("class", "form");
   formContainer.setAttribute("id", "addBookForm");
+  formContainer.setAttribute("autocomplete", "off");
   formContainer.addEventListener("submit", (e) => formAddBookSubmit(e));
-
+  
+  createCloseButton(formContainer);
   createTypedInput(formContainer, "title", "text");
   createTypedInput(formContainer, "author", "text");
   createTypedInput(formContainer, "pages", "number");
@@ -28,7 +29,7 @@ function createCloseButton(parent) {
   formClose.setAttribute("id", "closeCanvas");
   formClose.setAttribute("type", "button");
   formClose.addEventListener("click", () => {
-    parent.remove();
+    document.querySelector(".canvas").remove();
   })
   parent.appendChild(formClose);
 }
