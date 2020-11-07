@@ -154,6 +154,7 @@ body {
   height: 100vh;
   width: 100vw;
   background: rgba(75, 75, 75, 0.582);
+  backdrop-filter: blur(10px);
   position: fixed;
   display: grid;
   place-content: center;
