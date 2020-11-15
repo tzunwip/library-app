@@ -6,12 +6,14 @@ let sampleLibrary = [
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.bookid = myLibrary.length == 0 ? 1 : myLibrary[myLibrary.length - 1].bookid + 1;
+class Book {
+  constructor (title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.bookid = myLibrary.length == 0 ? 1 : myLibrary[myLibrary.length - 1].bookid + 1;
+  };
 }
 
 function addBookToLibrary(title, author, pages, read) {
