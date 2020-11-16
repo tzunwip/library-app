@@ -1,5 +1,20 @@
+function _generateCanvas() {
+  const body = document.querySelector("body");
+  const canvas = document.querySelector(".canvas");
+
+  if (canvas) {
+    canvas.textContent = "";
+    return canvas;
+  } else {
+    const newCanvas = document.createElement("div");
+    newCanvas.setAttribute("class", "canvas");
+    body.appendChild(newCanvas);
+    return newCanvas;
+  }
+}
+
 function generateAddBookForm() {
-  const canvas = document.createElement("div");
+  const canvas = _generateCanvas();
   canvas.setAttribute("class", "canvas");
   
   const formContainer = document.createElement("form");
@@ -23,7 +38,7 @@ function generateAddBookForm() {
 }
 
 function generateEditBookForm(targetBook) {
-  const canvas = document.createElement("div");
+  const canvas = _generateCanvas();
   canvas.setAttribute("class", "canvas");
   
   const formContainer = document.createElement("form");
@@ -44,6 +59,23 @@ function generateEditBookForm(targetBook) {
 
   canvas.appendChild(formContainer);
   body.appendChild(canvas);
+}
+
+function generateAlert(text, func = () => {}) {
+  const canvas = document.querySelector(".canvas");
+
+  const alertContainer = document.createElement("div");
+  alertContainer.setAttribute("class", "alert");
+  window.addEventListener("click", () => {
+    document.querySelector(".canvas").remove();
+    func();
+  }, {once: true});
+
+  const alertText = document.createElement("h3");
+  alertText.textContent = text;
+
+  alertContainer.appendChild(alertText);
+  canvas.appendChild(alertContainer);
 }
 
 function createCloseButton(parent) {
@@ -140,9 +172,9 @@ function formAddBookSubmit(e) {
 
   addBookToLibrary(title, author, pages, read);
 
-  e.target.reset();
+  e.target.remove();
   refreshDisplay();
-  alert(`${title} by ${author} was added.`);
+  generateAlert("Successfully added", generateAddBookForm);
 }
 
 function formEditBookSubmit(e, targetBookId) {
@@ -156,9 +188,9 @@ function formEditBookSubmit(e, targetBookId) {
 
   editBook(targetBookId, title, author, pages, read);
 
+  e.target.remove();
   refreshDisplay();
-  alert(`${title} by ${author} was edited.`);
-  document.querySelector(".canvas").remove();
+  generateAlert("Successfully edited");
 }
 
 // utility functions
