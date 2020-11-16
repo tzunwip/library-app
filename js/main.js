@@ -84,10 +84,20 @@ function createCard(parent, obj) {
   cardPages.textContent = `${obj.pages} pages`;
   card.appendChild(cardPages);
 
+  const cardIconContainer = document.createElement("div");
+  cardIconContainer.setAttribute("class", "card__icon-container");
+
   const readIcon = document.createElement("i");
   readIcon.setAttribute("class", `readicon readicon--${obj.read} far fa-check-circle`);
   readIcon.addEventListener("click", () => toggleReadStatus(readIcon, obj.bookid));
-  card.appendChild(readIcon);
+  cardIconContainer.appendChild(readIcon);
+
+  const editIcon = document.createElement("i");
+  editIcon.setAttribute("class", `editicon fas fa-pencil-alt`);
+  editIcon.addEventListener("click", () => generateEditBookForm(obj));
+  cardIconContainer.appendChild(editIcon);
+
+  card.appendChild(cardIconContainer);
 
   parent.appendChild(card);
 }
