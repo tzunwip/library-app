@@ -45,7 +45,7 @@ function editBook(targetBookId, title, author, pages, read) {
 
 // if localStorage empty, populates with sampleLibrary
 function getLocalStorage() {
-  if (localStorage.myLibrary !== "[]") {
+  if (localStorage.myLibrary !== "[]" && localStorage.myLibrary) {
     bookIdCount = JSON.parse(localStorage.bookIdCount);
     myLibrary = JSON.parse(localStorage.myLibrary)
   };
