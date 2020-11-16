@@ -8,13 +8,6 @@ class Book {
     this.read = read;
     this.bookid = myLibrary.length == 0 ? 1 : myLibrary[myLibrary.length - 1].bookid + 1;
   };
-
-  edit(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;  
-  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -34,7 +27,12 @@ function removeBookFromLibrary(id) {
 
 function editBook(targetBookId, title, author, pages, read) {
   const targetBookIndex = myLibrary.findIndex(obj => obj.bookid == targetBookId);
-  myLibrary[targetBookIndex].edit(title, author, pages, read);
+  const targetBook = myLibrary[targetBookIndex]
+  
+  targetBook.title = title
+  targetBook.author = author;
+  targetBook.pages = pages;
+  targetBook.read = read;
 
   setLocalStorage();
 }
