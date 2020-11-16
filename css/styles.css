@@ -186,7 +186,7 @@ body {
   position: relative;
   background: var(--gold);
   color: var(--dark-green);
-  border: 0.1rem solid black;
+  border: 0.1rem solid var(--dark-green);
   border-radius: 0.5rem;
   box-shadow: 0 15px 31px 0 rgba(78, 78, 78, 0.829);
   padding: 1.5rem;
@@ -285,4 +285,17 @@ button:focus {
 
 .form__button:hover {
   transform: scale(1.05);
+}
+
+/* alert */
+.alert {
+  position: absolute;
+  width: min(15rem, 95vw);
+  padding: 1rem;
+  background: var(--gold);
+  color: var(--dark-green);
+  border: 0.1rem solid var(--dark-green);
+  border-radius: 0.5rem;
+  place-self: center;
+  text-align: center;
 }
