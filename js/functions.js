@@ -1,9 +1,3 @@
-let sampleLibrary = [
-  {title: "The Bitcoin Standard: The Decentralized Alternative to Central Banking", author: "Saifedean Ammous", pages: "304", read: true, bookid: 1},
-  {title: "The Internet of Money: A collection of talks", author: "Andreas M. Antonopoulos", pages: "152", read: false, bookid: 2},
-  {title: "Digital Gold: Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money", author: "Nathaniel Popper", pages: "432", read: false, bookid: 3},
-];
-
 let myLibrary = [];
 
 class Book {
@@ -14,6 +8,13 @@ class Book {
     this.read = read;
     this.bookid = myLibrary.length == 0 ? 1 : myLibrary[myLibrary.length - 1].bookid + 1;
   };
+
+  edit(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;  
+  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -30,6 +31,19 @@ function removeBookFromLibrary(id) {
 
   setLocalStorage();
 }
+
+function editBook(targetBookId, title, author, pages, read) {
+  const targetBookIndex = myLibrary.findIndex(obj => obj.bookid == targetBookId);
+  myLibrary[targetBookIndex].edit(title, author, pages, read);
+
+  setLocalStorage();
+}
+
+const sampleLibrary = [
+  new Book("The Bitcoin Standard: The Decentralized Alternative to Central Banking", "Saifedean Ammous", "304", true),
+  new Book("The Internet of Money: A collection of talks",  "Andreas M. Antonopoulos", "152", false), 
+  new Book("Digital Gold: Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money", "Nathaniel Popper", "432", false),
+];
 
 // if localStorage empty, populates with sampleLibrary
 function getLocalStorage() {
