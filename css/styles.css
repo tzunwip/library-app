@@ -115,6 +115,12 @@ body {
   overflow-y: scroll;
 }
 
+.card__icon-container {
+  display: grid;
+  grid: none / auto-flow;
+  gap: 0.5rem;
+}
+
 .readicon--true, .readicon--false:hover {
   color: var(--green);
 }
@@ -136,11 +142,11 @@ body {
 }
 
 /* icons */
-.btn, .linkicon, .readicon {
+.btn, .linkicon, .readicon, .editicon {
   font-size: 1.5rem;
 }
 
-.btn:hover, .linkicon:hover, .readicon:hover {
+.btn:hover, .linkicon:hover, .readicon:hover, .editicon:hover {
   transform: scale(1.1);
 }
 
