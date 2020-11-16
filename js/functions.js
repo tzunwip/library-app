@@ -1,14 +1,19 @@
-let myLibrary = [];
-
 class Book {
   constructor (title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.bookid = myLibrary.length == 0 ? 1 : myLibrary[myLibrary.length - 1].bookid + 1;
+    this.bookid = bookIdCount++;
   };
 }
+
+let bookIdCount = 0;
+let myLibrary = [
+  new Book("The Bitcoin Standard: The Decentralized Alternative to Central Banking", "Saifedean Ammous", "304", true),
+  new Book("The Internet of Money: A collection of talks",  "Andreas M. Antonopoulos", "152", false), 
+  new Book("Digital Gold: Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money", "Nathaniel Popper", "432", false),
+];
 
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read));
@@ -28,6 +33,7 @@ function removeBookFromLibrary(id) {
 function editBook(targetBookId, title, author, pages, read) {
   const targetBookIndex = myLibrary.findIndex(obj => obj.bookid == targetBookId);
   const targetBook = myLibrary[targetBookIndex]
+  console.log(targetBookId);
   
   targetBook.title = title
   targetBook.author = author;
@@ -37,22 +43,17 @@ function editBook(targetBookId, title, author, pages, read) {
   setLocalStorage();
 }
 
-const sampleLibrary = [
-  new Book("The Bitcoin Standard: The Decentralized Alternative to Central Banking", "Saifedean Ammous", "304", true),
-  new Book("The Internet of Money: A collection of talks",  "Andreas M. Antonopoulos", "152", false), 
-  new Book("Digital Gold: Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money", "Nathaniel Popper", "432", false),
-];
-
 // if localStorage empty, populates with sampleLibrary
 function getLocalStorage() {
-  !storageAvailable("localStorage") ? myLibrary = sampleLibrary:
-  localStorage.myLibrary == "[]" ? myLibrary = sampleLibrary:
-  localStorage.myLibrary ? myLibrary = JSON.parse(localStorage.myLibrary):
-  myLibrary = sampleLibrary;
+  if (localStorage.myLibrary !== "[]") {
+    bookIdCount = JSON.parse(localStorage.bookIdCount);
+    myLibrary = JSON.parse(localStorage.myLibrary)
+  };
 }
 
 function setLocalStorage() {
   localStorage.myLibrary = JSON.stringify(myLibrary);
+  localStorage.bookIdCount = JSON.stringify(bookIdCount);
 }
 
 function storageAvailable(type) {
