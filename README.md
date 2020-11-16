@@ -4,12 +4,11 @@ The [Library App](https://tzunwip.github.io/library-app/) is written in javascri
 This project was created following [The Odin Project](https://theodinproject.com/) [javascript lesson](https://theodinproject.com/courses/javascript/lessons/library).
 
 ## Features
-* Insert/remove book entries
+* Insert/remove/edit book entries
 * Saves book collection to browser localStorage
 * Responsive UI
 
 ## To-do
-* Add function to edit existing book entries
 * Add search function
 * Add sort function
 * Add line display orientation option
