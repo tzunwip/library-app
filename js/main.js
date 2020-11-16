@@ -120,9 +120,10 @@ function refreshDisplay(inputArray = myLibrary) {
 
 function toggleReadStatus(icon, id) {
   const targetIndex = myLibrary.findIndex((obj) => {
-    return obj.bookid == id ? 1 : 0});
+    return obj.bookid == id});
 
   myLibrary[targetIndex].read = !myLibrary[targetIndex].read;
+  setLocalStorage();
 
   icon.classList.toggle("readicon--true");
   icon.classList.toggle("readicon--false");
